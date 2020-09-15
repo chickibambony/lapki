@@ -1,4 +1,5 @@
-﻿#include <iostream>
+#include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -10,20 +11,20 @@ int main() {
 	cin >> first;
 	cout << "second subset: ";
 	cin >> second;
-
+	
 	Union(first, union_str);
 	Union(second, union_str);
 
-	cout << union_str;
+	cout << setfill('+') << setw(40) << right << union_str;
 
 	return 0;
 }
 
 void Union(const string str, string& union_str) {
 	int flag;
-	for (size_t i = 0; i < str.size(); i++) {
+	for (int i = 0; i < str.size(); i++) {
 		flag = 1;
-		for (size_t j = 0; j < union_str.size(); j++) {
+		for (int j = 0; j < union_str.size(); j++) {
 			if (union_str[j] == str[i]) {
 				flag = 0;
 				break;
