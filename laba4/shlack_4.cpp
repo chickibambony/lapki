@@ -1,7 +1,9 @@
 #include <iostream>
+#include <windows.h>
+
 using namespace std;
 
-class Character 
+class Character
 {
 public:
 	Character(string name, int hp) {
@@ -20,7 +22,7 @@ public:
 	}
 
 	~Character() {
-		
+
 	}
 
 protected:
@@ -37,14 +39,14 @@ public:
 		this->armor = armor;
 	}
 
-	void PrintInfoWarrior(){
+	void PrintInfoWarrior() {
 		PrintInfoChar();
 		cout << "Armor: " << armor << endl;
 		cout << "Damage: " << damage << endl;
 	}
 
 	~Warrior() {
-	
+
 	}
 
 protected:
@@ -68,7 +70,7 @@ public:
 	}
 
 	~Knight() {
-	
+
 	}
 
 protected:
@@ -92,7 +94,7 @@ public:
 	}
 
 	~Heeler() {
-	
+
 	}
 
 protected:
@@ -116,7 +118,7 @@ public:
 	}
 
 	~Magician() {
-	
+
 	}
 
 protected:
@@ -128,7 +130,7 @@ class Paladin : protected Magician, protected Knight
 {
 public:
 	Paladin(string name, int hp, float heel, int potionCount, string spellName, int spellDamage, int armor, float damage, string skillName, float skillDamage, string XColor, int XCount)
-	:Magician(name, hp, heel, potionCount, spellName, spellDamage), Knight(name, hp, armor, damage, skillName, skillDamage), Character(name, hp)
+		:Magician(name, hp, heel, potionCount, spellName, spellDamage), Knight(name, hp, armor, damage, skillName, skillDamage), Character(name, hp)
 	{
 		this->XColor = XColor;
 		this->XCount = XCount;
@@ -145,9 +147,9 @@ public:
 	}
 
 	~Paladin() {
-	
+
 	}
-		
+
 private:
 	string XColor;
 	int XCount;
@@ -157,10 +159,13 @@ int GetValidInt(string);
 float GetValidFloat(string);
 
 int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
 	string name, spellName, skillName, XColor;
 	int hp, armor, XCount, potionCount;
 	float damage, skillDamage, spellDamage, heel;
-	
+
 	//info input
 	cout << "Name of Character: ";
 	cin >> name;
@@ -180,7 +185,7 @@ int main() {
 	cin >> XColor;
 
 	system("cls");
-	Paladin *test = new Paladin(name, hp, heel, potionCount, spellName, spellDamage, armor, damage, skillName, skillDamage, XColor, XCount);
+	Paladin* test = new Paladin(name, hp, heel, potionCount, spellName, spellDamage, armor, damage, skillName, skillDamage, XColor, XCount);
 
 	//info output
 	cout << "Info about paladin" << endl;
